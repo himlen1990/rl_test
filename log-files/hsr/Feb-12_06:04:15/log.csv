@@ -1,0 +1,2 @@
+_max_adv,_min_discrew,_max_discrew,_min_obs,_std_act,_min_act,_max_act,_mean_adv,_mean_act,_std_discrew,_MeanReward,ExplainedVarOld,Steps,_lr_multiplier,ExplainedVarNew,PolicyLoss,_Episode,_mean_obs,Beta,ValFuncLoss,KL,_mean_discrew,_std_adv,PolicyEntropy,_min_adv,_max_obs,_std_obs
+0.0,0.0030931816995143917,0.0030931816995143917,-0.0074009597301483154,0.0,-0.752029,0.972214,0.0,-0.00517305,0.0,0.61863633990287781,nan,1,1.0,nan,0.0,1,-0.0015258274310547151,0.66666666666666663,7.6997047092755472e-07,0.0,0.0030931816995143917,0.0,6.43257,0.0,0.0048146645228068037,0.0
