@@ -165,12 +165,12 @@ class pr2_agent:
         return self.obs
     
     def step(self,action):
-        #print "before"
-        #print self.get_ee_position()
-        #print action
+        print "before"
+        print self.get_ee_position()
+        print action
         action_vel = action/20.0
-        #print "action_vel"
-        #print action_vel
+        print "action_vel"
+        print action_vel
         self.current_pose = self.get_current_angle() #self.get_observations()[0:7]
         #print "before moving arm"
         #print self.current_pose

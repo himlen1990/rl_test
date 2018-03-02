@@ -114,9 +114,9 @@ class pr2_agent:
 
     def get_observations(self):
         positions = self.get_current_angle()
-        #self.ee_target = np.random.uniform(-1,1,3)
+        self.ee_target = np.random.uniform(-1,1,3)
         current_position = self.get_ee_position()[0]
-        return np.r_[np.reshape(positions,-1),np.reshape(self.random_goal,-1),np.reshape(current_position,-1)]
+        return np.r_[np.reshape(positions,-1),np.reshape(self.ee_target,-1),np.reshape(current_position,-1)]
 
 
     def angle_normalize(self):#normalize angle to [-1,1]
@@ -156,33 +156,33 @@ class pr2_agent:
     
     def reset(self):
         self.random_start = np.random.uniform(-0.8,0.8,7)
-        self.random_goal = np.random.uniform(-1,1,3)
+        print "random start", self.random_start
         self.move_arm(self.random_start.tolist())
-        #self.pre_target = np.array([0.,0.,0.])
+        self.pre_target = np.array([0.,0.,0.])
         self.obs = self.get_observations()
         print "reset"
         print  self.obs
         return self.obs
     
     def step(self,action):
-        #print "before"
-        #print self.get_ee_position()
-        #print action
+        print "before"
+        print self.get_ee_position()
+        print action
         action_vel = action/20.0
-        #print "action_vel"
-        #print action_vel
+        print "action_vel"
+        print action_vel
         self.current_pose = self.get_current_angle() #self.get_observations()[0:7]
         #print "before moving arm"
         #print self.current_pose
         self.processed_action = np.array(action_vel) + self.current_pose
         #print "processed action"
         #print self.processed_action
-        #self.pre_target = self.ee_target
+        self.pre_target = self.ee_target
         self.move_arm(self.processed_action)        
         self.obs = self.get_observations()
 
         #error = self.obs[7:10]
-        error = self.random_goal - self.obs[10:13]
+        error = self.pre_target - self.obs[10:13]
         #print "pre_target",self.pre_target
         #print "new_target", self.ee_target
         #print "error",error
